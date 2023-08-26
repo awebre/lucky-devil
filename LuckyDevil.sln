@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyDevil", "LuckyDevil\LuckyDevil.csproj", "{206AB5A0-CEEF-4B6F-8D4F-AF6FCBAE6588}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyDevil.Tests", "LuckyDevil.Tests\LuckyDevil.Tests.csproj", "{E1D1F2E9-C80E-484A-9E76-066DE0908FA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "git", "git", "{4A8F8036-E8D0-4667-BED1-EC11389AE1C7}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{206AB5A0-CEEF-4B6F-8D4F-AF6FCBAE6588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206AB5A0-CEEF-4B6F-8D4F-AF6FCBAE6588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206AB5A0-CEEF-4B6F-8D4F-AF6FCBAE6588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206AB5A0-CEEF-4B6F-8D4F-AF6FCBAE6588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D1F2E9-C80E-484A-9E76-066DE0908FA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D1F2E9-C80E-484A-9E76-066DE0908FA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D1F2E9-C80E-484A-9E76-066DE0908FA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D1F2E9-C80E-484A-9E76-066DE0908FA5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

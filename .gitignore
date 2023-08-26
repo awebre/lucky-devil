@@ -396,3 +396,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+.idea/*
+
+#Mac
+.DS_Store
+
+#Local only files
+appsettings.local.json
