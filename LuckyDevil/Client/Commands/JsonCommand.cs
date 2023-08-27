@@ -1,4 +1,4 @@
-namespace LuckyDevil.Client.Requests;
+namespace LuckyDevil.Client.Commands;
 
 /// <summary>
 /// Represents a command sent to the /json endpoint

@@ -1,6 +1,7 @@
 using System.Net.Http.Json;
 using System.Security.Cryptography;
 using System.Text;
+using LuckyDevil.Client.Commands;
 using LuckyDevil.Client.Requests;
 using LuckyDevil.Client.Responses;
 
@@ -22,12 +23,26 @@ public class BlueIrisClient
         return response;
     }
 
-    public async Task<LoginSessionResponse?> AttemptLogin(string baseUrl, string session, string username, string password)
+    public async Task<LoginSessionResponse?> AttemptLogin(string baseUrl, AttemptLoginRequest request)
     {
-        var hash = MD5.HashData(Encoding.ASCII.GetBytes($"{username}:{session}:{password}"));
-        var httpRequest = await GetJsonRequest(baseUrl, new LoginCommand(session, Convert.ToHexString(hash)));
+        var hash = MD5.HashData(Encoding.ASCII.GetBytes($"{request.Username}:{request.Session}:{request.Password}"));
+        var httpRequest = await GetJsonRequest(baseUrl, new LoginCommand(request.Session, Convert.ToHexString(hash)));
         var httpResponse = await client.SendAsync(httpRequest);
         var response = await httpResponse.Content.ReadFromJsonAsync<LoginSessionResponse>();
+        return response;
+    }
+
+    public async Task<string> GetCamList(string baseUrl, CamListRequest request)
+    {
+        var reset = request.Reset ?? CamListResetOptions.None;
+        BaseCamListCommand command = reset switch
+        {
+            CamListResetOptions.None => new CamListCommandFullReset(request.Session, false),
+            _ => new CamListCommandPartialOrFullReset(request.Session, (int)reset),
+        };
+        var httpRequest = await GetJsonRequest(baseUrl, command);
+        var httpResponse = await client.SendAsync(httpRequest);
+        var response = await httpResponse.Content.ReadAsStringAsync();
         return response;
     }
 
@@ -40,3 +55,8 @@ public class BlueIrisClient
     }
 }
 
+public record CamListCommandFullReset(string Session, bool Reset) : BaseCamListCommand(Session);
+
+public record CamListCommandPartialOrFullReset(string Session, int Reset) : BaseCamListCommand(Session);
+
+public record BaseCamListCommand(string Session);
